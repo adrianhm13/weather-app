@@ -1,5 +1,7 @@
 import './style.css';
-import { test } from './weather'
+import { getWeather } from './weather';
+import { Display } from './display';
 
+getWeather();
 
-test()
+Display.getButtons();
