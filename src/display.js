@@ -33,7 +33,7 @@ class Display {
     titleTemp.textContent = `${arg[1]}°`;
     titleTempFeels.textContent = `${arg[2]}°`;
     titleDesc.textContent = arg[3].charAt(0).toUpperCase() + arg[3].slice(1);
-    icon.src = `http://openweathermap.org/img/wn/${arg[4]}@2x.png`;
+    icon.src = `https://openweathermap.org/img/wn/${arg[4]}@2x.png`;
     console.log('aaa');
   }
 
