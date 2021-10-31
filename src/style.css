@@ -3,8 +3,183 @@
 *,
 ::after,
 ::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-html, body {
-    padding: 0;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background: url('./background-image.jpg');
+  background-size: 100% 100%;
+}
+.left-side {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 65%;
+  flex-direction: column;
+}
+.right-side {
+  width: 35%;
+}
+.blur {
+  background: rgba(0, 0, 0, 0.308);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+}
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 75%;
+  margin-left: 5%;
+  height: 15%;
+  margin-bottom: 10%;
+}
+.deg-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 25%;
+}
+.deg-content h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 95px;
+  font-weight: 500;
+  color: rgb(238, 238, 238);
+}
+.town-content {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding: 10px;
+}
+.town-info {
+  height: 50%;
+  color: whitesmoke;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.town-info h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+}
+.date-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 50%;
+  gap: 5px;
+}
+.date-info h3 {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: white;
+}
+.date-info h3#sunrise-sunset{
+  font-weight: 100;
+}
+.icon-info {
+  width: 15%;
+}
+
+.ref {
+  width: 100%;
+  height: 2%;
+  align-self: flex-end;
+  color: white;
+  font-size: 8px;
+}
+.input-container{
+  margin-top: 15%;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  gap: 20px;
+}
+.weather-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 80%;
+}
+.weather-info h2{
+  color: whitesmoke;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+.info-individual {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  max-height: 55px;
+}
+.info-individual h3 {
+  color: white;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+}
+#input-town {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgb(151, 151, 151);
+  resize: none;
+  border-bottom: 1px solid rgb(209, 209, 209);
+}
+#input-town:hover {
+  background-color: transparent;
+  transition: border-color 0.3s ease-in-out;
+  border-bottom: 1px solid rgb(136, 136, 136);
+}
+#input-town:focus {
+  background-color: transparent;
+  outline: none;
+  border-bottom: 1px solid rgb(34, 34, 34);
+}
+.fas.fa-search-location {
+  color: rgba(255, 255, 255, 0.479);
+  font-size: 35px;
+  transition: 0.5s;
+}
+.fas.fa-search-location:hover {
+  cursor:pointer;
+  color: rgba(255, 255, 255, 0.822);
+  font-size: 35px;
+}
+.icon-description img{
+  width: 70px;
+  height: 70px;
+  line-height: 55px;
 }

@@ -1,7 +1,8 @@
+import { Display } from "./display";
+
 /* eslint-disable no-use-before-define */
-async function getWeather() {
+async function getWeather(town) {
   try {
-    const town = 'alberic';
     const units = 'metric';
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/forecast?q=${town}&appid=99e063d251e089131341c84ce050eeb4&units=${units}`,
@@ -19,26 +20,49 @@ function filterData(data) {
   // Filter General Data
 
   const todayData = filterToday(data); // Filter data to get only today (Array with objects, different times of day)
+  const titleTown = data.city.name;
+  const temp = todayData[0].main.temp.toLocaleString().split('.', 1);
+  console.log(temp);
   const sunriseSunset = getSunriseSunset(data); // Transpile Unix to human readable info (Sunrise/Sunset)
-  const {population} = data.city;   // Get population of the town
-
+  const {population} = data.city;  
+   // Render general info about the town
+  Display.renderGeneralInfo(titleTown, sunriseSunset, population, temp);
   // Filter data through each block of time
-  
+  firstBlockTimeDay(todayData, sunriseSunset, population);
   filterBlockTimeDay(todayData);
+}
+function firstBlockTimeDay(todayData){
+  const timeHour = getTimeDay(todayData[0]);
+  const tempFeelsLike = todayData[0].main.feels_like.toLocaleString().split('.', 1);
+  const temp = todayData[0].main.temp.toLocaleString().split('.', 1);
+  const {description} = todayData[0].weather[0];
+  const {icon} = todayData[0].weather[0];
+  console.log(`The time it's: ${timeHour}`);
+  console.log(`Temps feel like ${tempFeelsLike}`);
+  console.log(`Temp it's: ${temp}`);
+  console.log(`Description it's: ${description}`);
+  console.log(`The icon it's: ${icon}`);
+  const arg = [timeHour,temp , tempFeelsLike, description, icon];
+  Display.renderFirstBlockTime(...arg);
 }
 function filterBlockTimeDay(todayData){
   for (let index = 0; index < todayData.length; index += 1) {
-    console.log(todayData[index]);
+    console.log(todayData);
+    const timeHour = getTimeDay(todayData[index]);
     const tempFeelsLike = todayData[index].main.feels_like.toLocaleString().split('.', 1);
     const temp = todayData[index].main.temp.toLocaleString().split('.', 1);
     const {description} = todayData[index].weather[0];
     const {icon} = todayData[index].weather[0];
-    console.log(`Temps feel like ${tempFeelsLike}`);
-    console.log(`Temp it's: ${temp}`);
-    console.log(`Description it's: ${description}`);
-    console.log(`The icon it's: ${icon}`);
+    // console.log(`The time it's: ${timeHour}`);
+    // console.log(`Temps feel like ${tempFeelsLike}`);
+    // console.log(`Temp it's: ${temp}`);
+    // console.log(`Description it's: ${description}`);
+    // console.log(`The icon it's: ${icon}`);
 
     // Render information
+
+
+    
   }
 }
 function filterToday(data) {
@@ -61,7 +85,11 @@ function getSunriseSunset(data) {
   return [sunrise, sunset];
 }
 
-function getTimeDay(data) {}
+function getTimeDay(todayData) {
+  let hour = todayData.dt;
+  hour = unixToNormal(hour);
+  return hour;
+}
 
 function unixToNormal(value) {
   const mseconds = value * 1000;
